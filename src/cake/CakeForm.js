@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ListOfCakes from "./ListOfCakes";
+import CakeList from "./CakeList";
 
 const CakeForm = ({listOfCakes, setListOfCakes }) => {
     const [cakeName, setCakeName] = useState("");
@@ -9,9 +9,9 @@ const CakeForm = ({listOfCakes, setListOfCakes }) => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        const updatedCakes = [...ListOfCakes];
+        const updatedCakes = [...listOfCakes];
         const newCake = {
-            name: cakeName,
+            cakeName: cakeName,
             ingredients: ingredients,
             price: price,
             rating: rating

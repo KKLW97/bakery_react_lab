@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Cake from "./Cake.js";
 import CakeForm from "./CakeForm.js";
-import ListOfCakes from "./ListOfCakes.js";
+import CakeList from "./CakeList.js";
 
 const CakeContainer = () => {
 
-    const [listOfCakes, setListOfCakes] = useState(
+    const [listOfCakes, setListOfCakes] = React.useState(
 		[
 			{
 				cakeName: "Victoria Sponge",
@@ -48,14 +48,16 @@ const CakeContainer = () => {
 			} 
 		]		
 	)
-
+	const list = listOfCakes.map((cake, index) => <Cake key={index} cake={cake}/>)
   return (
     <>
-		{/* <ListOfCakes cakes={Cake}/> */}
-        <Cake cake={listOfCakes[0]}/>
+		{list}
+        {/* <Cake cake={listOfCakes[0]}/>
         <Cake cake={listOfCakes[1]} />
-        <Cake cake={listOfCakes[1]} />
-		{/* <CakeForm cake={cake} setListOfCakes={setListOfCakes}/> */}
+        <Cake cake={listOfCakes[1]} /> */}
+		<CakeForm listOfCakes={listOfCakes} setListOfCakes={setListOfCakes}/>
+
+		
     </>
   )
 }
