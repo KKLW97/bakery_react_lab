@@ -36,7 +36,7 @@ const CakeForm = ({listOfCakes, setListOfCakes }) => {
                     name="ingredients"
                     placeholder="Ingredients"
                     value={ingredients}
-                    onChange = {(e) => setIngredients(e.target.value.split())} />
+                    onChange = {(e) => setIngredients(e.target.value.split(", "))} />
                 <input
                     type="number"
                     name="price"
