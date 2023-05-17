@@ -5,20 +5,40 @@ const CakeForm = ({listOfCakes, setListOfCakes }) => {
     const [ingredients, setIngredients] = useState([]);
     const [price, setPrice] = useState(0);
     const [rating, setRating] = useState(0);
+    const [error, setError] = useState ("");
 
+    const handleValidation = () => {
+      let errorMessage = "";
+  
+      if(listOfCakes.find((cake) => cake.cakeName === cakeName)){
+        errorMessage = "This cake already exists!";
+      };
+  
+      if(price  < 0){
+          errorMessage = "Price cannot be less than 0";
+        };
+  
+      setError(errorMessage);
+  
+      return errorMessage !== "";
+    };
+    
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        const updatedCakes = [...listOfCakes];
-        const newCake = {
-            cakeName: cakeName,
-            ingredients: ingredients,
-            price: price,
-            rating: rating
-        };
-        updatedCakes.push(newCake);
-        setListOfCakes(updatedCakes);
 
-    }
+        if(!handleValidation()){
+            const updatedCakes = [...listOfCakes];
+            const newCake = {
+                cakeName: cakeName,
+                ingredients: ingredients,
+                price: price,
+                rating: rating
+            };
+            updatedCakes.push(newCake);
+            setListOfCakes(updatedCakes);
+        };
+
+    };
 
 
     return ( 
@@ -52,6 +72,7 @@ const CakeForm = ({listOfCakes, setListOfCakes }) => {
                 <input type="submit" value="submit" />
                 
             </form>
+            <p>{error}</p>
         </>
      );
 }
