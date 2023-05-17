@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CakeList from "./CakeList";
 
 const CakeForm = ({listOfCakes, setListOfCakes }) => {
     const [cakeName, setCakeName] = useState("");
